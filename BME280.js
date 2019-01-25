@@ -64,6 +64,7 @@ class BME280 {
           }
 
           else if(chipId !== BME280.CHIP_ID_BME280() &&
+                  chipId !== BME280.CHIP_ID4_BME680() &&
                   chipId !== BME280.CHIP_ID1_BMP280() &&
                   chipId !== BME280.CHIP_ID2_BMP280() &&
                   chipId !== BME280.CHIP_ID3_BMP280()) {
@@ -232,6 +233,10 @@ class BME280 {
     return 0x60;
   }
 
+  static CHIP_ID4_BME680() {
+    return 0x61;
+  }
+  
   static int16(msb, lsb) {
     let val = BME280.uint16(msb, lsb);
     return val > 32767 ? (val - 65536) : val;
